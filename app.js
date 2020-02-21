@@ -1,6 +1,9 @@
 window.addEventListener('load',()=> {
     let long;
     let lat;
+    let temperatureInfo = document.querySelector('.temperature-info');
+    let temperatureDegree = document.querySelector('.temperature-degree');
+    let locationTimezone = document.querySelector('.location-timezone');
 
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(position =>{
@@ -15,6 +18,10 @@ window.addEventListener('load',()=> {
                 })
                 .then(data=>{
                     console.log(data);
+                    const {temperature, summary} = data.currently;
+                    // Set DOM Elements from API
+                    temperatureDegree.textContent=temperature;
+                    temperature
                 });
         });
 
